@@ -1,10 +1,10 @@
 int budget ;
-int step = 0;
+int step = 3;
 String one = "Welcome to New York!\nHope you\'re dwelling 24h on this incredible city and not stuck somewhere for weeks on the same building :)";
 String enter = "Press enter to continue";
 String jersey = "Aha, good try! NYC only! Press enter to try again";
 String two = "It's time to look for a place to live.\nYou don't have time nor budget but hurry up before you're left out at the hands of Eva Lair\'s BNB…";
-String three = "You have a $900 budget to find a place. Do you your best not to starve!";
+String three = "You have a $900 budget to find a place. Do you your best not to starve!\nPress enter to continue.";
 String four = "OK, so where do you want to start looking?\nPress B for Brooklyn, Q for Queens and M for Manhattan";
 String b11 = "Press 1 if you want a flat for yourself\nOr 2 if you don't mind sharing a place";
 String b2 = "You'd love to live along the L train, right? Press 1 if so\nOr 2, if Far Rockaway doesn't sound too exotic…";
@@ -36,22 +36,37 @@ void draw() {
 }
 
 void keyPressed() {
-  key = keyLog;
-  if (keyLog == ENTER && step == 0) { 
-    printWord(ENTER, one, "next"); 
+  if (key == keyLog(ENTER) && step == 0) { 
+    printWord(one, "next", 0); 
   }
-  if(keyLog == '1' && step == 1) {
-    printWord('1', two, "start");
+  if(key == keyLog(ENTER) && step == 1) {
+    printWord(two, "next", 0);
   }
+  if (key == keyLog(ENTER) && step == 2) {
+    printWord(three, "next", 0);
+  }
+  if (key == keyLog('j') && step == 2) {
+    printWord(jersey, "start", 0);
+  }
+  
   
 }
 
-void printWord(char keyP, String question, String where) {
+void printWord(String question, String where, int cost) {
   println(question);
   if (where == "next") {
     step += 1;
   } else if (where == "start") {
     step = 3;
   }
-  keyLog = keyP;
+  budget = budget - cost;
+}
+
+char keyLog (char keyP) {
+   if (key == CODED) {
+    keyLog = key;
+  } else {
+    keyLog = key;
+  }
+  return keyLog;
 }
