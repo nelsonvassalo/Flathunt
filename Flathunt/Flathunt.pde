@@ -61,12 +61,3 @@ void printWord(String question, String where, int cost) {
   }
   budget = budget - cost;
 }
-
-char keyLog (char keyP) {
-   if (key == CODED) {
-    keyLog = key;
-  } else {
-    keyLog = key;
-  }
-  return keyLog;
-}
