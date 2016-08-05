@@ -1,5 +1,5 @@
 int budget ;
-int step = 3;
+int step = 0;
 String one = "Welcome to New York!\nHope you\'re dwelling 24h on this incredible city and not stuck somewhere for weeks on the same building :)";
 String enter = "Press enter to continue";
 String jersey = "Aha, good try! NYC only! Press enter to try again";
@@ -14,6 +14,7 @@ String b41 = "Smart economics. With how many people? Choose 5 or 2 on your keybo
 String b51 = "YES YOU DO CAN AFFORD THAT! You got yourself a room in Jamaica and $" + budget + " a month you can invest in sanitizing the place from bedbugs!\n===END OF GAME===";
 String b42 = "Press 1 if you want a common area or 2 if you can live without one";
 String b52 = "Super smart decision\n You can wisely use those $" + budget +" left to sanitize the whole place from bedbugs :D!\n===END OF GAME===";
+String b53 = "Be honest. You can't actually live like a rat…\n===Press Enter to RESTART SEARCH===";
 String m1 = "So, cosmopolitan one huh? Press 1 for a flat or 2 for a basement";
 String m21 = "ROFL. Seriously now, press Enter to start again";
 String m22 = "Can you live only 4 days a week and not be there during work hours? Press Y for \'Yes\'";
@@ -36,18 +37,55 @@ void draw() {
 }
 
 void keyPressed() {
-  if (key == keyLog(ENTER) && step == 0) { 
+  println(step+1);
+  if (key == ENTER && step == 0) { 
     printWord(one, "next", 0); 
   }
-  if(key == keyLog(ENTER) && step == 1) {
+  else if(key == ENTER && step == 1) {
     printWord(two, "next", 0);
   }
-  if (key == keyLog(ENTER) && step == 2) {
+  else if (key == ENTER && step == 2) {
     printWord(three, "next", 0);
   }
-  if (key == keyLog('j') && step == 2) {
+  else if (key == 'j' && step == 2) {
     printWord(jersey, "start", 0);
   }
+  else if (key == ENTER && step == 3) {
+    printWord(four,"next",0);
+  }
+  else if (key == 'B' || key == 'b' && step == 4) {
+    printWord(b11,"next",0);
+  }
+  else if(key == '1' && step == 5) {
+    printWord(b2,"next",0);
+  }
+  else if (key == '2' && step == 5) {
+    printWord(b41, "next", 0);
+  }
+  else if (key == '1' && step == 5) {
+    printWord(b31, "start", 0);
+  }
+  else if (key == '2' && step == 5) {
+    printWord(b32,"start",770);
+  }
+   else if (key == '1' && step == 6) {
+    printWord(b31, "start", 0);
+  }
+  else if (key == '2' && step == 6) {
+    printWord(b51, "start", 0);
+  }
+  else if (key == '5' && step == 6) {
+    printWord(b42,"next",0);
+  }
+  else if (key =='1' && step == 7) {
+    printWord(b51, "next", 0);
+  }
+  else if (key == '2' && step == 7) {
+    printWord(b53, "start", 600);
+  }
+  else if (key == '2' && step == 8) {
+    printWord(b52,"start",750);
+  }  
   
   
 }
