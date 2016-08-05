@@ -1,5 +1,4 @@
-int budget, cost;
-int step = 0;
+int budget, cost, step;
 String currentHood = "";
 String one = "Welcome to New York!\nHope you\'re dwelling 24h on this incredible city and not stuck somewhere for weeks on the same building :)";
 String enter = "Press enter to continue";
@@ -48,7 +47,7 @@ void keyPressed() {
   else if (key == ENTER && step == 2) {
     printWord(three, "next", 0);
   }
-  else if (key == 'j' && step == 2) {
+  else if (key == 'j' || key == 'J' && step == 2) {
     printWord(jersey, "start", 0);
   }
   else if (key == ENTER && step == 3) {
@@ -65,12 +64,12 @@ void keyPressed() {
     printWord(b41, "next", 0);
   }
   else if (currentHood=="B" && key == '1' && step == 5) {
-    printWord(b31, "start", 0);
+    printWord(b31, "next", 0);
   }
   else if (currentHood=="B" && key == '2' && step == 5) {
-    printWord(b32,"start",770);
+    printWord(b32,"next",770);
   }
-   else if (currentHood=="B" && key == '1' && step == 6) {
+  else if (currentHood=="B" && key == '1' && step == 6) {
     printWord(b31, "start", 0);
   }
   else if (currentHood=="B" && key == '2' && step == 6) {
@@ -122,6 +121,6 @@ void printWord(String question, String where, int pay) {
     step = 3;
   }
   cost = pay; 
-  budget = budget - cost;
+  budget = (int) (budget - cost);
   println(question);
 }
